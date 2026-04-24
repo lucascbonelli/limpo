@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react'
 import { Camera } from 'lucide-react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay } from 'swiper/modules'
@@ -5,12 +6,6 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import './BeforeAfter.css'
 
-/*
-  Para adicionar suas fotos:
-  1. Coloque as imagens na pasta public/fotos/
-  2. Nomeie como: 01-antes.jpg, 01-depois.jpg, 02-antes.jpg, 02-depois.jpg, etc.
-  3. Atualize o array abaixo com os nomes dos arquivos
-*/
 const photos = [
   { src: '/fotos/foto-1-antes.jpeg', type: 'antes', label: 'Estofado - Antes' },
   { src: '/fotos/foto-1-depois.jpeg', type: 'depois', label: 'Estofado - Depois' },
@@ -23,8 +18,31 @@ const photos = [
 ]
 
 function BeforeAfter() {
+  const swiperRef = useRef(null)
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && swiperRef.current) {
+          setTimeout(() => {
+            swiperRef.current.autoplay.start()
+          }, 1000)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.3 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="resultados" className="results">
+    <section id="resultados" className="results" ref={sectionRef}>
       <div className="results__container">
         <div className="results__header">
           <span className="results__tag">
@@ -47,8 +65,9 @@ function BeforeAfter() {
             slidesPerView={1.2}
             centeredSlides={true}
             pagination={{ clickable: true }}
-            autoplay={{ delay: 2500, disableOnInteraction: true }}
+            autoplay={{ delay: 2500, disableOnInteraction: true, enabled: false }}
             loop={true}
+            onSwiper={(swiper) => { swiperRef.current = swiper }}
             breakpoints={{
               480: { slidesPerView: 1.5 },
               640: { slidesPerView: 2.3, centeredSlides: false },

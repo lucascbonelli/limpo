@@ -34,7 +34,7 @@ function Footer() {
 
           <div className="footer__links">
             <h4>Redes Sociais</h4>
-            <a href="#" className="footer__social">
+            <a href="https://www.instagram.com/limpo.solucoes/" target="_blank" rel="noopener noreferrer" className="footer__social">
               <AtSign size={16} />
               Instagram
             </a>

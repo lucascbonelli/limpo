@@ -31,7 +31,7 @@ function Contact() {
             </div>
             <div className="contact__info-item">
               <MapPin size={18} />
-              <span>Atendemos sua região</span>
+              <span>Blumenau e região</span>
             </div>
             <div className="contact__info-item">
               <Clock size={18} />

@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react'
 import { Sofa, Armchair, RectangleHorizontal, SprayCan, Droplets, ShieldCheck } from 'lucide-react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay } from 'swiper/modules'
@@ -39,8 +40,31 @@ const services = [
 ]
 
 function Services() {
+  const swiperRef = useRef(null)
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && swiperRef.current) {
+          setTimeout(() => {
+            swiperRef.current.autoplay.start()
+          }, 1000)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.3 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="servicos" className="services">
+    <section id="servicos" className="services" ref={sectionRef}>
       <div className="services__container">
         <div className="services__header">
           <span className="services__tag">Nossos Serviços</span>
@@ -60,7 +84,8 @@ function Services() {
             slidesPerView={1.15}
             centeredSlides={true}
             pagination={{ clickable: true }}
-            autoplay={{ delay: 3000, disableOnInteraction: true }}
+            autoplay={{ delay: 3000, disableOnInteraction: true, enabled: false }}
+            onSwiper={(swiper) => { swiperRef.current = swiper }}
             breakpoints={{
               480: { slidesPerView: 1.5 },
               640: { slidesPerView: 2.2, centeredSlides: false },
