@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function TransparentLogo({ src, alt, className, width, height }) {
-  const canvasRef = useRef(null)
   const [dataUrl, setDataUrl] = useState(null)
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     const img = new Image()
@@ -22,10 +22,8 @@ function TransparentLogo({ src, alt, className, width, height }) {
         const g = data[i + 1]
         const b = data[i + 2]
 
-        // If pixel is close to white, make it transparent
         if (r > 200 && g > 200 && b > 200) {
           const brightness = (r + g + b) / 3
-          // Gradual transparency: whiter = more transparent
           const alpha = Math.max(0, (255 - brightness) * 4)
           data[i + 3] = Math.min(alpha, data[i + 3])
         }
@@ -33,6 +31,7 @@ function TransparentLogo({ src, alt, className, width, height }) {
 
       ctx.putImageData(imageData, 0, 0)
       setDataUrl(canvas.toDataURL('image/png'))
+      setTimeout(() => setLoaded(true), 50)
     }
     img.src = src
   }, [src])
@@ -41,7 +40,18 @@ function TransparentLogo({ src, alt, className, width, height }) {
     return <div className={className} style={{ width, height }} />
   }
 
-  return <img src={dataUrl} alt={alt} className={className} />
+  return (
+    <img
+      src={dataUrl}
+      alt={alt}
+      className={className}
+      style={{
+        opacity: loaded ? 1 : 0,
+        transform: loaded ? 'scale(1)' : 'scale(0.9)',
+        transition: 'opacity 0.8s ease, transform 0.8s ease',
+      }}
+    />
+  )
 }
 
 export default TransparentLogo
