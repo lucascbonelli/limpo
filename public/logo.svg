@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <defs>
+    <linearGradient id="petalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00B4D8"/>
+      <stop offset="100%" stop-color="#00E676"/>
+    </linearGradient>
+    <linearGradient id="petalGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00E676"/>
+      <stop offset="100%" stop-color="#00B4D8"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00B4D8"/>
+      <stop offset="100%" stop-color="#00E676"/>
+    </linearGradient>
+    <linearGradient id="centerGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#90E0EF"/>
+      <stop offset="100%" stop-color="#00B4D8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Pétala central (topo) -->
+  <path d="M200 60 Q215 120 200 160 Q185 120 200 60Z" fill="url(#petalGrad)" opacity="0.95"/>
+
+  <!-- Pétalas superiores laterais -->
+  <path d="M200 80 Q240 100 260 140 Q220 135 200 110Z" fill="url(#petalGrad)" opacity="0.85"/>
+  <path d="M200 80 Q160 100 140 140 Q180 135 200 110Z" fill="url(#petalGrad2)" opacity="0.85"/>
+
+  <!-- Pétalas médias -->
+  <path d="M200 100 Q260 110 290 155 Q245 155 210 135Z" fill="url(#petalGrad)" opacity="0.7"/>
+  <path d="M200 100 Q140 110 110 155 Q155 155 190 135Z" fill="url(#petalGrad2)" opacity="0.7"/>
+
+  <!-- Pétalas externas -->
+  <path d="M200 120 Q275 125 310 170 Q260 175 215 150Z" fill="url(#petalGrad)" opacity="0.55"/>
+  <path d="M200 120 Q125 125 90 170 Q140 175 185 150Z" fill="url(#petalGrad2)" opacity="0.55"/>
+
+  <!-- Pétalas mais externas -->
+  <path d="M200 140 Q290 140 330 185 Q275 195 220 165Z" fill="url(#petalGrad)" opacity="0.4"/>
+  <path d="M200 140 Q110 140 70 185 Q125 195 180 165Z" fill="url(#petalGrad2)" opacity="0.4"/>
+
+  <!-- Centro da flor -->
+  <circle cx="200" cy="165" r="8" fill="url(#centerGrad)" opacity="0.9"/>
+
+  <!-- Base / caule estilizado -->
+  <path d="M195 175 Q200 210 200 230 Q200 210 205 175Z" fill="url(#petalGrad)" opacity="0.5"/>
+
+  <!-- Texto "Limpô" -->
+  <text x="200" y="300" text-anchor="middle" font-family="Georgia, 'Playfair Display', serif" font-size="72" font-weight="700" font-style="italic" fill="url(#textGrad)">Limpô</text>
+
+  <!-- Linha decorativa abaixo do texto -->
+  <line x1="130" y1="320" x2="270" y2="320" stroke="url(#textGrad)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+</svg>

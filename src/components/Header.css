@@ -1,0 +1,125 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+.header--scrolled {
+  background: rgba(11, 14, 26, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 0.5rem 0;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+.header__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo-img {
+  height: 50px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.header__logo-img:hover {
+  transform: scale(1.05);
+}
+
+.header--scrolled .header__logo-img {
+  height: 40px;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header__link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gray-400);
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.header__link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.header__link:hover {
+  color: var(--primary-light);
+}
+
+.header__link:hover::after {
+  width: 100%;
+}
+
+.header__cta {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--dark);
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(201, 168, 76, 0.25);
+}
+
+.header__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(201, 168, 76, 0.4);
+}
+
+.header__menu-btn {
+  display: none;
+  background: none;
+  color: var(--white);
+  padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .header__menu-btn {
+    display: block;
+  }
+
+  .header__nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--dark-light);
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .header__nav--open {
+    right: 0;
+  }
+
+  .header__link {
+    font-size: 1.1rem;
+  }
+}
