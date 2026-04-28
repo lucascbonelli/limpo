@@ -3,7 +3,7 @@ import TransparentLogo from './TransparentLogo'
 import './Hero.css'
 
 function Hero() {
-  const whatsappUrl = "https://wa.me/554791458038?text=Olá! Gostaria de solicitar um orçamento para higienização de estofados."
+  const whatsappUrl = "https://wa.me/5547991484425?text=Olá! Gostaria de solicitar um orçamento para higienização de estofados."
 
   return (
     <section id="hero" className="hero">

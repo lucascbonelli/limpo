@@ -3,7 +3,7 @@ import TransparentLogo from './TransparentLogo'
 import './Contact.css'
 
 function Contact() {
-  const whatsappUrl = "https://wa.me/554791458038?text=Olá! Gostaria de agendar uma higienização de estofados."
+  const whatsappUrl = "https://wa.me/5547991484425?text=Olá! Gostaria de agendar uma higienização de estofados."
 
   return (
     <section id="contato" className="contact">

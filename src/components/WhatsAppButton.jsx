@@ -2,7 +2,7 @@ import { MessageCircle } from 'lucide-react'
 import './WhatsAppButton.css'
 
 function WhatsAppButton() {
-  const whatsappUrl = "https://wa.me/554791458038?text=Olá! Gostaria de saber mais sobre higienização de estofados."
+  const whatsappUrl = "https://wa.me/5547991484425?text=Olá! Gostaria de saber mais sobre higienização de estofados."
 
   return (
     <a

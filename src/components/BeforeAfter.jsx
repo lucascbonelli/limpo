@@ -103,7 +103,7 @@ function BeforeAfter() {
         <div className="results__cta">
           <p>Quer ver seu estofado assim?</p>
           <a
-            href="https://wa.me/554791458038?text=Olá! Vi os resultados no site e gostaria de agendar uma higienização!"
+            href="https://wa.me/5547991484425?text=Olá! Vi os resultados no site e gostaria de agendar uma higienização!"
             target="_blank"
             rel="noopener noreferrer"
             className="results__btn"
