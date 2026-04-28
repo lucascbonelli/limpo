@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { MessageCircle, CheckCircle, Clock, AlertTriangle, Star } from 'lucide-react'
+import { MessageCircle, CheckCircle, Clock, AlertTriangle, Star, Copy, Check } from 'lucide-react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
@@ -7,11 +7,14 @@ import 'swiper/css/pagination'
 import TransparentLogo from '../components/TransparentLogo'
 import './Promo.css'
 
-const WHATSAPP_URL = "https://wa.me/5547991484425?text=Olá! Vi a promoção do mês no site e quero garantir meu desconto!"
-
 const MESES = [
   'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
   'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+]
+
+const MESES_CURTOS = [
+  'JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN',
+  'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'
 ]
 
 const photos = [
@@ -46,8 +49,19 @@ function getVagas() {
 
 function Promo() {
   const [time, setTime] = useState(getTimeUntilEndOfMonth())
+  const [copied, setCopied] = useState(false)
   const vagas = getVagas()
-  const mesAtual = MESES[new Date().getMonth()]
+  const now = new Date()
+  const mesAtual = MESES[now.getMonth()]
+  const mesCurto = MESES_CURTOS[now.getMonth()]
+  const ano = now.getFullYear()
+
+  // Cupom: LIMPO + MÊS + ANO (ex: LIMPOJAN2025)
+  const cupom = `LIMPO${mesCurto}${ano}`
+
+  const whatsappUrl = `https://wa.me/5547991484425?text=${encodeURIComponent(
+    `Olá! Quero aproveitar a promoção de ${mesAtual}!\n\nMeu cupom: *${cupom}*\n\nPode me passar mais informações?`
+  )}`
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -55,6 +69,12 @@ function Promo() {
     }, 1000)
     return () => clearInterval(timer)
   }, [])
+
+  function copiarCupom() {
+    navigator.clipboard.writeText(cupom)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   return (
     <div className="promo">
@@ -83,24 +103,31 @@ function Promo() {
 
           <p className="promo__subtitle">
             Todo mês a Limpô oferece condições especiais para novos clientes.
-            Este mês é a sua vez! Vagas limitadas — garanta a sua antes que acabe.
+            Use o cupom abaixo e garanta seu desconto antes que as vagas acabem!
           </p>
 
-          <div className="promo__offer-box">
-            <div className="promo__offer-icon">🛋️</div>
-            <div className="promo__offer-text">
-              <strong>Promoção de {mesAtual}</strong>
-              <span>Condições especiais para higienização de estofados e tapetes</span>
+          {/* Cupom */}
+          <div className="promo__coupon">
+            <div className="promo__coupon-label">Seu cupom de desconto:</div>
+            <div className="promo__coupon-box">
+              <div className="promo__coupon-left">
+                <span className="promo__coupon-icon">🎟️</span>
+              </div>
+              <div className="promo__coupon-code">{cupom}</div>
+              <button className="promo__coupon-copy" onClick={copiarCupom} aria-label="Copiar cupom">
+                {copied ? <Check size={18} /> : <Copy size={18} />}
+              </button>
             </div>
-            <div className="promo__offer-badge">OFERTA DO MÊS</div>
+            {copied && <p className="promo__coupon-copied">✅ Cupom copiado!</p>}
+            <p className="promo__coupon-hint">Válido somente em {mesAtual} • Vagas limitadas</p>
           </div>
 
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="promo__cta">
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="promo__cta">
             <MessageCircle size={22} />
-            Quero Garantir Meu Desconto!
+            Usar Cupom no WhatsApp
           </a>
 
-          <p className="promo__cta-hint">👆 Clique e fale direto no WhatsApp</p>
+          <p className="promo__cta-hint">👆 O cupom já vai na mensagem automaticamente</p>
         </div>
       </section>
 
@@ -108,7 +135,7 @@ function Promo() {
       <section className="promo__countdown-section">
         <p className="promo__countdown-label">
           <Clock size={16} />
-          Promoção de {mesAtual} encerra em:
+          Cupom de {mesAtual} expira em:
         </p>
         <div className="promo__countdown">
           <div className="promo__countdown-item">
@@ -214,12 +241,12 @@ function Promo() {
       <section className="promo__final-cta">
         <div className="promo__final-urgency">
           <AlertTriangle size={16} />
-          <span>Oferta de {mesAtual} válida somente até o fim do mês ou enquanto houver vagas!</span>
+          <span>Cupom <strong>{cupom}</strong> válido somente até o fim de {mesAtual}!</span>
         </div>
         <h2 className="promo__final-title">Não perca a promoção de {mesAtual}!</h2>
-        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="promo__cta promo__cta--large">
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="promo__cta promo__cta--large">
           <MessageCircle size={24} />
-          Garantir Meu Desconto Agora
+          Usar Cupom Agora
         </a>
         <p className="promo__final-hint">Sem compromisso • Resposta imediata</p>
       </section>

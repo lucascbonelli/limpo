@@ -133,8 +133,74 @@
   border-radius: 50px;
   letter-spacing: 0.5px;
 }
+/* Cupom */
+.promo__coupon {
+  width: 100%;
+  margin-bottom: 1.8rem;
+  text-align: center;
+}
 
-/* CTA */
+.promo__coupon-label {
+  font-size: 0.8rem;
+  color: var(--gray-400);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.promo__coupon-box {
+  display: flex;
+  align-items: center;
+  background: var(--dark-light);
+  border: 2px dashed var(--primary);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.promo__coupon-left {
+  background: rgba(201, 168, 76, 0.1);
+  padding: 1rem 0.8rem;
+  font-size: 1.4rem;
+  border-right: 2px dashed var(--primary);
+}
+
+.promo__coupon-code {
+  flex: 1;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--primary-light);
+  padding: 0.8rem 0.5rem;
+}
+
+.promo__coupon-copy {
+  background: rgba(201, 168, 76, 0.1);
+  border: none;
+  padding: 1rem 0.8rem;
+  color: var(--primary);
+  cursor: pointer;
+  border-left: 2px dashed var(--primary);
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.promo__coupon-copy:active {
+  background: rgba(201, 168, 76, 0.2);
+}
+
+.promo__coupon-copied {
+  font-size: 0.8rem;
+  color: #22c55e;
+  margin-top: 0.5rem;
+}
+
+.promo__coupon-hint {
+  font-size: 0.75rem;
+  color: var(--gray-600);
+  margin-top: 0.5rem;
+}
+
 .promo__cta {
   display: flex;
   align-items: center;
