@@ -96,7 +96,7 @@ function Promo() {
           <span className="promo__badge">🎉 Promoção de {mesAtual}</span>
 
           <h1 className="promo__title">
-            Higienização com
+            Higienização de estofados com
             <span className="promo__title-highlight"> desconto especial</span>
             {' '}em {mesAtual}!
           </h1>
