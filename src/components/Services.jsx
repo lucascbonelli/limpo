@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react'
-import { Sofa, Armchair, RectangleHorizontal, SprayCan, Droplets, ShieldCheck } from 'lucide-react'
+import { Sofa, Armchair, RectangleHorizontal, SprayCan, Droplets } from 'lucide-react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
@@ -31,11 +31,6 @@ const services = [
     icon: Droplets,
     title: 'Impermeabilização',
     description: 'Proteção extra para seus estofados contra líquidos, manchas e sujeira do dia a dia.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Higienização Automotiva',
-    description: 'Bancos, carpetes e forros do seu carro higienizados com produtos profissionais.',
   },
 ]
 
