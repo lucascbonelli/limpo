@@ -25,7 +25,7 @@ function Header() {
     <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
       <div className="header__container">
         <a href="#hero" className="header__logo">
-          <TransparentLogo src="/logo-limpo.png" alt="Limpô" className="header__logo-img" />
+          <TransparentLogo src="/somente-logo.png" alt="Limpô" className="header__logo-img" />
         </a>
 
         <nav className={`header__nav ${menuOpen ? 'header__nav--open' : ''}`}>
