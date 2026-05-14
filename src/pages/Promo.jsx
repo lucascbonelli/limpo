@@ -59,7 +59,7 @@ function Promo() {
   // Cupom: LIMPO + MÊS + ANO (ex: LIMPOJAN2025)
   const cupom = `LIMPO${mesCurto}${ano}`
 
-  const whatsappUrl = `https://wa.me/5547991484425?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/5547914844425?text=${encodeURIComponent(
     `Olá! Quero aproveitar a promoção de ${mesAtual}!\n\nMeu cupom: *${cupom}*\n\nPode me passar mais informações?`
   )}`
 
