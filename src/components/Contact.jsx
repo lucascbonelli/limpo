@@ -35,7 +35,7 @@ function Contact() {
             </div>
             <div className="contact__info-item">
               <Clock size={18} />
-              <span>Seg - Sáb: 7h às 18h</span>
+              <span>Seg - Sex: 8h às 18h • Sáb: 8h às 12h</span>
             </div>
           </div>
         </div>
